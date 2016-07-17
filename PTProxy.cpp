@@ -58,17 +58,22 @@ void PTProxy::setMotorPWM(int pwm1, int pwm2){
 		NFComBuf.SetDrivesMode.data[1] = NF_DrivesMode_PWM;
 		commandArray[commandCnt++] = NF_COMMAND_SetDrivesMode;
 	}
-	return 0;
 }
 
 void PTProxy::setDigitalOutputs(int out){
 	NFComBuf.SetDigitalOutputs.data[0] = out;
 	commandArray[commandCnt++] = NF_COMMAND_SetDigitalOutputs;
-	return 0;
 }
 
 void PTProxy::getAnalogInputs(int *ain, int len) {
 	commandArray[commandCnt++] = NF_COMMAND_ReadAnalogInputs;
-	for(int i=0; i<len; i++)
+	for(int i=0; (i<len) && (i<NF_BUFSZ_ReadAnalogInputs); i++)
 		ain[i] = NFComBuf.ReadAnalogInputs.data[i];
 }
+
+void PTProxy::getDeviceVitals(int *devv, int len) {
+        commandArray[commandCnt++] = NF_COMMAND_ReadDeviceVitals;
+        for(int i=0; (i<len) && (i<NF_BUFSZ_ReadDeviceVitals); i++)
+                devv[i] = NFComBuf.ReadDeviceVitals.data[i];
+}
+

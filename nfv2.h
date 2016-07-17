@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 #include <inttypes.h>			    
-#include "../nfv2_config.h"
+#include "nfv2_config.h"
 
 /*
 * Command codes

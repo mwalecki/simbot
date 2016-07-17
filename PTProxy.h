@@ -8,8 +8,8 @@
 #ifndef PTPROXY_H_
 #define PTPROXY_H_
 
-#include "nf/nfv2.h"
-#include "serialcomm/serialcomm.h"
+#include "nfv2.h"
+#include "serialcomm.h"
 #include <iostream>
 #include <math.h>
 
@@ -26,6 +26,7 @@ public:
 	void setMotorPWM(int pwm1, int pwm2);
 	void setDigitalOutputs(int out);
 	void getAnalogInputs(int *ain, int len);
+	void getDeviceVitals(int *devv, int len);
 private:
 	NF_STRUCT_ComBuf NFComBuf;
 	SerialComm *CommPort;
