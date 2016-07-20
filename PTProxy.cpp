@@ -60,6 +60,12 @@ void PTProxy::setMotorPWM(int pwm1, int pwm2){
 	}
 }
 
+void PTProxy::setServosPosition(int *pos, int len){
+	for(int i=0; i<len; i++)
+	        NFComBuf.SetDigitalOutputs.data[i] = pos[i];
+        commandArray[commandCnt++] = NF_COMMAND_SetServosPosition;
+}
+
 void PTProxy::setDigitalOutputs(int out){
 	NFComBuf.SetDigitalOutputs.data[0] = out;
 	commandArray[commandCnt++] = NF_COMMAND_SetDigitalOutputs;

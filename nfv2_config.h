@@ -13,7 +13,7 @@
 * to be supported by module:
 */
 //	#define NF_BUFSZ_ReadDeviceStatus		1
-	#define NF_BUFSZ_ReadDeviceVitals		6
+	#define NF_BUFSZ_ReadDeviceVitals		2
 
 	#define NF_BUFSZ_SetDrivesMode			2
 //	#define NF_BUFSZ_SetDrivesSpeed			2
@@ -35,7 +35,7 @@
 //	#define NF_BUFSZ_SetPositionRegulator	2
 
 //	#define NF_BUFSZ_SetServosMode			28
-	#define NF_BUFSZ_SetServosPosition		8
+	#define NF_BUFSZ_SetServosPosition		2
 //	#define NF_BUFSZ_SetServosSpeed			28
 //	#define NF_BUFSZ_SetServosMaxSpeed		28
 //	#define NF_BUFSZ_SetServosMinPosition	28
@@ -46,8 +46,8 @@
 //	#define NF_BUFSZ_SetServosMisc			28
 //	#define NF_BUFSZ_ReadServosStatus		28
 											
-	#define NF_BUFSZ_SetDigitalOutputs		1
-	#define NF_BUFSZ_ReadDigitalInputs		1
+	#define NF_BUFSZ_SetDigitalOutputs		2
+	#define NF_BUFSZ_ReadDigitalInputs		2
 	#define NF_BUFSZ_ReadAnalogInputs		8
 	
 	#define NF_BUFSZ_ReadDistance			1  

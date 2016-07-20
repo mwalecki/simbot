@@ -5,10 +5,15 @@ void NFv2_Config2(NF_STRUCT_ComBuf *NFComBuf, uint8_t myAddress, uint8_t slaveAd
 NFComBuf->myAddress = myAddress;
 NFComBuf->ReadDeviceVitals.addr[0] = slaveAddress;
 NFComBuf->ReadDeviceVitals.addr[1] = slaveAddress;
-NFComBuf->ReadDeviceVitals.addr[1] = slaveAddress;
-NFComBuf->ReadDeviceVitals.addr[1] = slaveAddress;
-NFComBuf->ReadDeviceVitals.addr[1] = slaveAddress;
-NFComBuf->ReadDeviceVitals.addr[1] = slaveAddress;
+
+NFComBuf->SetServosPosition.addr[0] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[1] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[2] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[3] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[4] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[5] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[6] = slaveAddress;
+//NFComBuf->SetServosPosition.addr[7] = slaveAddress;
 
 NFComBuf->SetDrivesMode.addr[0] = slaveAddress;
 NFComBuf->SetDrivesMode.addr[1] = slaveAddress;

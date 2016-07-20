@@ -25,6 +25,7 @@ public:
 	void nextStep(void);
 	void setMotorPWM(int pwm1, int pwm2);
 	void setDigitalOutputs(int out);
+	void setServosPosition(int *pos, int len);
 	void getAnalogInputs(int *ain, int len);
 	void getDeviceVitals(int *devv, int len);
 private:
