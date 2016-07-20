@@ -12,7 +12,7 @@ void control(void);
 // Defines
 #define DEVICE_VITALS_SZ 2
 #define ANALOG_INPUTS_SZ 8
-#define SERVOS_NO 8
+#define SERVOS_NO 4
 
 // Globals
 cJoystick *js;
@@ -61,7 +61,7 @@ void ptpReadWrite(void){
 	ptp->getAnalogInputs(analog_in, ANALOG_INPUTS_SZ);
 	ptp->setMotorPWM(pwm0, pwm1);
 	ptp->setDigitalOutputs(digital_out);
-//	ptp->setServosPosition(servos_position, 1);
+	ptp->setServosPosition(servos_position, 4);
 	ptp->nextStep();
 }
 
@@ -69,6 +69,6 @@ void control(void){
 	digital_out = (js->buttonPressed(3)?(1<<0):0);
 	pwm0 = 500 * js->axisPosition(0);
 	pwm1 = 500 * js->axisPosition(1);
-	servos_position[0] = 450 + 400*js->axisPosition(3);
+	servos_position[0] = 1500 + 500*js->axisPosition(3);
 }
 

@@ -7,7 +7,7 @@ NFComBuf->ReadDeviceVitals.addr[0] = slaveAddress;
 NFComBuf->ReadDeviceVitals.addr[1] = slaveAddress;
 
 NFComBuf->SetServosPosition.addr[0] = slaveAddress;
-//NFComBuf->SetServosPosition.addr[1] = slaveAddress;
+NFComBuf->SetServosPosition.addr[1] = slaveAddress;
 //NFComBuf->SetServosPosition.addr[2] = slaveAddress;
 //NFComBuf->SetServosPosition.addr[3] = slaveAddress;
 //NFComBuf->SetServosPosition.addr[4] = slaveAddress;
@@ -17,6 +17,8 @@ NFComBuf->SetServosPosition.addr[0] = slaveAddress;
 
 NFComBuf->SetDrivesMode.addr[0] = slaveAddress;
 NFComBuf->SetDrivesMode.addr[1] = slaveAddress;
+NFComBuf->SetDrivesMode.addr[2] = slaveAddress;
+NFComBuf->SetDrivesMode.addr[3] = slaveAddress;
 
 NFComBuf->SetDrivesPWM.addr[0] = slaveAddress;
 NFComBuf->SetDrivesPWM.addr[1] = slaveAddress;
@@ -46,5 +48,6 @@ NFComBuf->ReadAnalogInputs.addr[6] = slaveAddress;
 NFComBuf->ReadAnalogInputs.addr[7] = slaveAddress;
 
 NFComBuf->SetDigitalOutputs.addr[0] = slaveAddress;
+NFComBuf->SetDigitalOutputs.addr[1] = slaveAddress;
 }
 

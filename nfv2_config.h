@@ -15,7 +15,7 @@
 //	#define NF_BUFSZ_ReadDeviceStatus		1
 	#define NF_BUFSZ_ReadDeviceVitals		2
 
-	#define NF_BUFSZ_SetDrivesMode			2
+	#define NF_BUFSZ_SetDrivesMode			4
 //	#define NF_BUFSZ_SetDrivesSpeed			2
 //	#define NF_BUFSZ_SetDrivesCurrent		2
 //	#define NF_BUFSZ_SetDrivesPosition		2
@@ -35,7 +35,7 @@
 //	#define NF_BUFSZ_SetPositionRegulator	2
 
 //	#define NF_BUFSZ_SetServosMode			28
-	#define NF_BUFSZ_SetServosPosition		2
+	#define NF_BUFSZ_SetServosPosition		4
 //	#define NF_BUFSZ_SetServosSpeed			28
 //	#define NF_BUFSZ_SetServosMaxSpeed		28
 //	#define NF_BUFSZ_SetServosMinPosition	28
@@ -47,10 +47,10 @@
 //	#define NF_BUFSZ_ReadServosStatus		28
 											
 	#define NF_BUFSZ_SetDigitalOutputs		2
-	#define NF_BUFSZ_ReadDigitalInputs		2
+//	#define NF_BUFSZ_ReadDigitalInputs		2
 	#define NF_BUFSZ_ReadAnalogInputs		8
 	
-	#define NF_BUFSZ_ReadDistance			1  
+//	#define NF_BUFSZ_ReadDistance			1  
 	
 //	#define NF_BUFSZ_SetDisplayMode			1
 //	#define NF_BUFSZ_SetDisplayText			33
