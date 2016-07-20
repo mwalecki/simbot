@@ -7,17 +7,22 @@ using namespace std;
 // Prototypes
 void printControlScreen(void);
 void ptpReadWrite(void);
+void control(void);
 
 // Defines
 #define DEVICE_VITALS_SZ 6
 #define ANALOG_INPUTS_SZ 8
+#define SERVOS_NO 8
 
 // Globals
 cJoystick *js;
 PTProxy *ptp;
-
-int _G_device_vitals[DEVICE_VITALS_SZ];
-int _G_analog_inputs[ANALOG_INPUTS_SZ];
+int pwm0 = 0;
+int pwm1 = 0;
+int digital_out = 0;
+int device_vitals[DEVICE_VITALS_SZ];
+int analog_in[ANALOG_INPUTS_SZ];
+unsigned int servos_position[SERVOS_NO];
 
 int main(int argc, char *argv[]) {
 
@@ -42,15 +47,24 @@ void printControlScreen(void){
                 cout << (js->buttonPressed(i)?"[#] ":"[ ] ");
 	cout << endl;
         for(int i=0; i<DEVICE_VITALS_SZ; i++)
-		cout << _G_device_vitals[i] << endl;
+		cout << device_vitals[i] << endl;
 	for(int i=0; i<ANALOG_INPUTS_SZ; i++)
-                cout << _G_analog_inputs[i] << endl;
+                cout << analog_in[i] << endl;
 	cout.flush();
 }
 
 void ptpReadWrite(void){
-	ptp->getDeviceVitals(_G_device_vitals, DEVICE_VITALS_SZ);
-	ptp->getAnalogInputs(_G_analog_inputs, ANALOG_INPUTS_SZ);
+	control();
+	ptp->getDeviceVitals(device_vitals, DEVICE_VITALS_SZ);
+	ptp->getAnalogInputs(analog_in, ANALOG_INPUTS_SZ);
+	ptp->setMotorPWM(pwm0, pwm1);
+	ptp->setDigitalOutputs(digital_out);
 	ptp->nextStep();
+}
+
+void control(void){
+	digital_out = (js->buttonPressed(3)?(1<<0):0);
+	pwm0 = 500 * js->axisPosition(0);
+	pwm1 = 500 * js->axisPosition(1);
 }
 
