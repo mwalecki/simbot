@@ -8,6 +8,7 @@ using namespace std;
 void printControlScreen(void);
 void ptpReadWrite(void);
 void control(void);
+void flash_leds(void);
 
 // Defines
 #define DEVICE_VITALS_SZ 2
@@ -29,8 +30,7 @@ int main(int argc, char *argv[]) {
 	js = new cJoystick();
 	sleep(1);
 	ptp = new PTProxy("/dev/usb-to-serial");
-	sleep(1);	
-
+	flash_leds();
 	while(1) {
 		ptpReadWrite();
 		printControlScreen();
@@ -66,9 +66,26 @@ void ptpReadWrite(void){
 }
 
 void control(void){
-	digital_out = (js->buttonPressed(3)?(1<<0):0);
-	pwm0 = 500 * js->axisPosition(0);
-	pwm1 = 500 * js->axisPosition(1);
+	digital_out = (js->buttonPressed(0)?(1<<0):0)
+		| (js->buttonPressed(1)?(1<<1):0)
+		| (js->buttonPressed(2)?(1<<2):0)
+		| (js->buttonPressed(3)?(1<<3):0);
+	pwm0 = -800*js->axisPosition(1) + 500*js->axisPosition(0);
+	pwm1 = 800*js->axisPosition(1) + 500*js->axisPosition(0);
 	servos_position[0] = 1500 + 500*js->axisPosition(3);
+}
+
+void flash_leds(void){
+	for(int i=0; i<4; i++){
+		ptp->setDigitalOutputs(1<<i);
+		ptp->nextStep();
+		usleep(100000);
+	}
+	for(int i=3; i>=0; i--){
+                ptp->setDigitalOutputs(1<<i);
+                ptp->nextStep();
+		usleep(100000);
+        }
+
 }
 
