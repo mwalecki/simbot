@@ -65,11 +65,24 @@ void ptpReadWrite(void){
 }
 
 void control(void){
-	digital_out = (js->buttonPressed(9)?(1<<0):0)
+	int fan_active = 0;
+	static int front_active = 0;
+	int button_front_val = 0;
+	static int button_front_prev_val = 0;
+	
+	button_front_val = js->buttonPressed(9);
+	if((button_front_val != 0) && (button_front_prev_val ==0))
+		front_active = 1 - front_active;
+	button_front_prev_val = button_front_val;
+	
+	if(js->axisPosition(3) < 0)
+		fan_active = 1;
+	
+	digital_out = (front_active?(1<<0):0)
 		| (js->buttonPressed(7)?(1<<1):0)
 		| (js->buttonPressed(6)?(1<<2):0)
 		| (js->buttonPressed(8)?(1<<3):0)
-		| (js->buttonPressed(4)?(1<<5):0);
+		| (fan_active?(1<<5):0);
 	pwm0 = -800*js->axisPosition(3) + 500*js->axisPosition(2);
 	pwm1 = -800*js->axisPosition(3) - 500*js->axisPosition(2);
 	servos_position[0] = 1500 + 500*js->axisPosition(0);
